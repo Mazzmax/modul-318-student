@@ -45,13 +45,18 @@
             this.chGleis2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDauer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chUmsteigen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpFahrplan = new System.Windows.Forms.TabPage();
+            this.tpAushangfahrten = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.transportBindingSource)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tpFahrplan.SuspendLayout();
             this.SuspendLayout();
             // 
             // lVon
             // 
             this.lVon.AutoSize = true;
-            this.lVon.Location = new System.Drawing.Point(23, 22);
+            this.lVon.Location = new System.Drawing.Point(21, 21);
             this.lVon.Name = "lVon";
             this.lVon.Size = new System.Drawing.Size(37, 17);
             this.lVon.TabIndex = 0;
@@ -60,7 +65,7 @@
             // lNach
             // 
             this.lNach.AutoSize = true;
-            this.lNach.Location = new System.Drawing.Point(23, 59);
+            this.lNach.Location = new System.Drawing.Point(21, 58);
             this.lNach.Name = "lNach";
             this.lNach.Size = new System.Drawing.Size(45, 17);
             this.lNach.TabIndex = 1;
@@ -68,21 +73,21 @@
             // 
             // tVon
             // 
-            this.tVon.Location = new System.Drawing.Point(75, 19);
+            this.tVon.Location = new System.Drawing.Point(73, 18);
             this.tVon.Name = "tVon";
             this.tVon.Size = new System.Drawing.Size(150, 22);
             this.tVon.TabIndex = 2;
             // 
             // tNach
             // 
-            this.tNach.Location = new System.Drawing.Point(75, 59);
+            this.tNach.Location = new System.Drawing.Point(73, 58);
             this.tNach.Name = "tNach";
             this.tNach.Size = new System.Drawing.Size(150, 22);
             this.tNach.TabIndex = 3;
             // 
             // bSuchen
             // 
-            this.bSuchen.Location = new System.Drawing.Point(75, 98);
+            this.bSuchen.Location = new System.Drawing.Point(73, 97);
             this.bSuchen.Name = "bSuchen";
             this.bSuchen.Size = new System.Drawing.Size(150, 22);
             this.bSuchen.TabIndex = 4;
@@ -96,6 +101,7 @@
             // 
             // lvFahrplan
             // 
+            this.lvFahrplan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lvFahrplan.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chLinie,
             this.chAbfahrt,
@@ -106,10 +112,10 @@
             this.chGleis2,
             this.chDauer,
             this.chUmsteigen});
-            this.lvFahrplan.Location = new System.Drawing.Point(26, 187);
+            this.lvFahrplan.Location = new System.Drawing.Point(24, 167);
             this.lvFahrplan.Name = "lvFahrplan";
             this.lvFahrplan.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lvFahrplan.Size = new System.Drawing.Size(1030, 309);
+            this.lvFahrplan.Size = new System.Drawing.Size(964, 309);
             this.lvFahrplan.TabIndex = 6;
             this.lvFahrplan.UseCompatibleStateImageBehavior = false;
             this.lvFahrplan.View = System.Windows.Forms.View.Details;
@@ -155,22 +161,56 @@
             this.chUmsteigen.Text = "Umsteigen";
             this.chUmsteigen.Width = 86;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tpFahrplan);
+            this.tabControl1.Controls.Add(this.tpAushangfahrten);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1015, 526);
+            this.tabControl1.TabIndex = 7;
+            // 
+            // tpFahrplan
+            // 
+            this.tpFahrplan.Controls.Add(this.lVon);
+            this.tpFahrplan.Controls.Add(this.lvFahrplan);
+            this.tpFahrplan.Controls.Add(this.lNach);
+            this.tpFahrplan.Controls.Add(this.bSuchen);
+            this.tpFahrplan.Controls.Add(this.tVon);
+            this.tpFahrplan.Controls.Add(this.tNach);
+            this.tpFahrplan.Location = new System.Drawing.Point(4, 25);
+            this.tpFahrplan.Name = "tpFahrplan";
+            this.tpFahrplan.Padding = new System.Windows.Forms.Padding(3);
+            this.tpFahrplan.Size = new System.Drawing.Size(1007, 497);
+            this.tpFahrplan.TabIndex = 0;
+            this.tpFahrplan.Text = "Fahrplan";
+            this.tpFahrplan.UseVisualStyleBackColor = true;
+            // 
+            // tpAushangfahrten
+            // 
+            this.tpAushangfahrten.Location = new System.Drawing.Point(4, 25);
+            this.tpAushangfahrten.Name = "tpAushangfahrten";
+            this.tpAushangfahrten.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAushangfahrten.Size = new System.Drawing.Size(1007, 497);
+            this.tpAushangfahrten.TabIndex = 1;
+            this.tpAushangfahrten.Text = "Aushangfahrten";
+            this.tpAushangfahrten.UseVisualStyleBackColor = true;
+            // 
             // GUI1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 508);
-            this.Controls.Add(this.lvFahrplan);
-            this.Controls.Add(this.bSuchen);
-            this.Controls.Add(this.tNach);
-            this.Controls.Add(this.tVon);
-            this.Controls.Add(this.lNach);
-            this.Controls.Add(this.lVon);
+            this.ClientSize = new System.Drawing.Size(1028, 535);
+            this.Controls.Add(this.tabControl1);
             this.Name = "GUI1";
             this.Text = "GUI1";
             ((System.ComponentModel.ISupportInitialize)(this.transportBindingSource)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tpFahrplan.ResumeLayout(false);
+            this.tpFahrplan.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -192,5 +232,8 @@
         private System.Windows.Forms.ColumnHeader chGleis2;
         private System.Windows.Forms.ColumnHeader chDauer;
         private System.Windows.Forms.ColumnHeader chUmsteigen;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tpFahrplan;
+        private System.Windows.Forms.TabPage tpAushangfahrten;
     }
 }
