@@ -16,7 +16,7 @@ namespace TransitApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TransitApp());
+            Application.Run(new GUI1());
         }
     }
 }
