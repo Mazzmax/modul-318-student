@@ -13,19 +13,27 @@ namespace TransitApp
 {
     public partial class GUI1 : Form
     {
-        // Member
+        //Membervariable
+
         Transport transport = new Transport();
-        
+
         public GUI1()
         {
             InitializeComponent();
         }
 
-        private void Verbindung(ListView ListViewName)
+        //Fahrplan
+
+        private void bSuchen_Click(object sender, EventArgs e)
+        {
+            Fahrplan(lvFahrplan);
+        }
+
+        private void Fahrplan(ListView ListViewName)
         {
             ListViewName.Items.Clear();
-
-            Connections verbindungen = transport.GetConnections(tVon.Text, tNach.Text);
+                        
+            Connections verbindungen = transport.GetConnections(cbVon.Text, cbNach.Text);
 
             foreach (Connection verbindung in verbindungen.ConnectionList)
             {
@@ -41,7 +49,6 @@ namespace TransitApp
                     verbindung1.SubItems.Add(ankunft.ToShortTimeString());
                     verbindung1.SubItems.Add(verbindung.To.Station.Name);
                     verbindung1.SubItems.Add(verbindung.To.Platform);
-                    verbindung1.SubItems.Add(verbindung.Duration);
 
                     ListViewName.Items.Add(verbindung1);
                 }
@@ -52,10 +59,60 @@ namespace TransitApp
             }
         }
 
-        // Ereignisse
-        private void bSuchen_Click(object sender, EventArgs e)
+        //Aushangfahrplan
+
+        private void bSuchen2_Click(object sender, EventArgs e)
         {
-            Verbindung(lvFahrplan);
+            Aushangfahrplan(cbStation.Text, lvAushangfahrplan);
         }
+        private void Aushangfahrplan(string StationName, ListView ListViewName)
+        {
+            ListViewName.Items.Clear();
+
+            Station station = transport.GetStations(StationName).StationList.First();
+            StationBoardRoot stationBoardRoot = transport.GetStationBoard(StationName, station.Id);
+
+            foreach (StationBoard stationBoard in stationBoardRoot.Entries)
+            {
+                try
+                {
+                    ListViewItem listViewItem = new ListViewItem();
+                    listViewItem.Text = stationBoard.Name;
+                    listViewItem.SubItems.Add(stationBoard.Stop.Departure.ToShortTimeString());
+                    listViewItem.SubItems.Add(stationBoard.To);
+
+                    ListViewName.Items.Add(listViewItem);
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        //Autocomplete
+
+        private void autoComplete(object sender, EventArgs e)
+        {
+            Transport transport = new Transport();
+            Stations stations = new Stations();
+            ComboBox input = (ComboBox)sender;
+
+            if (input.Text.Length >= 2)
+            {
+                stations = transport.GetStations(input.Text);
+                foreach (var station in stations.StationList)
+                {
+                    try
+                    {
+                        input.Items.Add(station.Name);
+                    }
+                    catch (ArgumentNullException exception)
+                    {
+                        Console.WriteLine(exception);
+                    }
+                }
+            }
+        }        
     }
 }
